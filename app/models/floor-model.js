@@ -1,4 +1,3 @@
-// floor-model.js
 const mongoose = require('mongoose');
 
 const { Schema, model } = mongoose;
@@ -16,7 +15,7 @@ const floorSchema = new Schema({
             type: Number,
         }
     }],
-    parkingLot: {  // Ensure this field name matches the reference field in the ParkingLot schema
+    parkingLot: {  
         type: Schema.Types.ObjectId,
         ref: 'ParkingLot'
     }

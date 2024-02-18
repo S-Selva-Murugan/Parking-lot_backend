@@ -41,8 +41,6 @@ parkingLotCltr.create = async (req, res) => {
 };
 
 
-
-
 parkingLotCltr.update = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -58,7 +56,7 @@ parkingLotCltr.update = async (req, res) => {
             return res.status(404).json({ error: 'Parking lot not found' });
         }
 
-        // Update slot availability for each floor
+        // Updating slot availability for each floor
         for (const updatedFloorData of floors) {
             const currentFloor = parkingLot.floors.find(floor => floor.floorNumber === updatedFloorData.floorNumber);
             if (currentFloor) {
@@ -74,8 +72,6 @@ parkingLotCltr.update = async (req, res) => {
                 }
             }
         }
-
-        // Save the updated parkingLot document
         await parkingLot.save();
 
         res.status(200).json(parkingLot);
